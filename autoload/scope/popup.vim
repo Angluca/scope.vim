@@ -149,7 +149,7 @@ export class FilterMenu
                             # close the popup window for <cr> when popup window is empty
                             popup_close(id, -1)
                         endif
-                    elseif key == "\<Right>" || key == "\<PageDown>"
+                    elseif key == "\<C-f>" || key == "\<C-e>"
                         if this.idp->getmatches()->indexof((_, v) => v.group == 'ScopeMenuVirtualText') != -1
                             # virtual text present. grep using virtual text.
                             this.prompt = this.idp->getwininfo()[0].bufnr->getbufline(1)[0]->slice(2)
@@ -159,7 +159,7 @@ export class FilterMenu
                         else
                             win_execute(id, 'normal! ' .. "\<C-d>")
                         endif
-                    elseif key == "\<Left>" || key == "\<PageUp>"
+                    elseif key == "\<C-b>" || key == "\<C-y>"
                         win_execute(id, 'normal! ' .. "\<C-u>")
                     elseif key == "\<tab>" || key == "\<C-n>" || key == "\<Down>" || key == "\<ScrollWheelDown>"
                         var ln = getcurpos(id)[1]
